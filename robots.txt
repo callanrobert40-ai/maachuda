@@ -1,0 +1,13 @@
+# robots.txt for A Farm Recipe
+# Allow all crawlers to index the main website
+# Block access to confidential OS-specific pages
+
+User-agent: *
+Allow: /
+
+# Block bots from indexing the OS-specific redirect target pages
+Disallow: /apple.html
+Disallow: /Windows/
+
+# Sitemap location
+Sitemap: https://afarmrecipe.com/sitemap.xml

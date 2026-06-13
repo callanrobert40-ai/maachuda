@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact A Farm Recipe — Send Us Your Questions &amp; Recipe Ideas</title>
+    <meta name="description" content="Get in touch with A Farm Recipe. Submit your recipe ideas, ask cooking questions, or inquire about collaborations. We'd love to hear from you.">
+    <meta name="keywords" content="contact farm recipe, recipe ideas, cooking questions, food blog contact, submit recipe, recipe collaboration, cooking help">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="A Farm Recipe">
+    <link rel="canonical" href="https://afarmrecipe.com/contact.html">
+    <meta property="og:title" content="Contact A Farm Recipe">
+    <meta property="og:description" content="Get in touch with A Farm Recipe. Submit recipe ideas or ask cooking questions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://afarmrecipe.com/contact.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact A Farm Recipe",
+      "url": "https://afarmrecipe.com/contact.html",
+      "description": "Get in touch with A Farm Recipe team for recipe ideas, cooking questions, or collaborations."
+    }
+    </script>
+    <style>
+      .nav-active {
+        color: var(--secondary) !important;
+        border-bottom: 2px solid var(--secondary);
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo" aria-label="A Farm Recipe Home">A Farm Recipe</a>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vegan-recipes.html">Vegan Recipes</a></li>
+                <li><a href="indian-recipes.html">Indian Recipes</a></li>
+                <li><a href="italian-bakery-recipes.html">Italian &amp; Bakery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="nav-active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero" style="height: 40vh; min-height: 300px; background-attachment: fixed; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80');" role="banner">
+            <h1 style="font-size:3rem;">Contact Us</h1>
+        </div>
+        <section class="content-block" aria-label="Contact form">
+            <h2>We'd Love to Hear From You</h2>
+            <p style="text-align:center; max-width:600px; margin: 0 auto 30px; color:#555;">Have a recipe idea? A cooking question? Want to collaborate? Drop us a message and we'll get back to you within 48 hours.</p>
+            <div style="max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <form onsubmit="event.preventDefault(); alert('Message sent successfully! We will get back to you soon.');" aria-label="Contact form">
+                    <div style="margin-bottom: 20px;">
+                        <label for="contact-name" style="display:block; margin-bottom:8px; font-weight:bold;">Name</label>
+                        <input type="text" id="contact-name" name="name" style="width:100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px;" required autocomplete="name" aria-required="true">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label for="contact-email" style="display:block; margin-bottom:8px; font-weight:bold;">Email</label>
+                        <input type="email" id="contact-email" name="email" style="width:100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px;" required autocomplete="email" aria-required="true">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label for="contact-subject" style="display:block; margin-bottom:8px; font-weight:bold;">Subject</label>
+                        <select id="contact-subject" name="subject" style="width:100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
+                            <option value="recipe-idea">Submit a Recipe Idea</option>
+                            <option value="cooking-question">Cooking Question</option>
+                            <option value="collaboration">Collaboration Inquiry</option>
+                            <option value="feedback">General Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label for="contact-message" style="display:block; margin-bottom:8px; font-weight:bold;">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" style="width:100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px;" required aria-required="true" placeholder="Tell us about your recipe idea, cooking question, or how we can help..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width:100%;" id="contact-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h2>A Farm Recipe</h2>
+        <p>Fresh from the Farm, Straight to Your Table</p>
+        <nav aria-label="Footer navigation" style="margin-top: 20px;">
+            <a href="vegan-recipes.html" style="color:#fff;margin:0 10px;text-decoration:none;">Vegan</a>
+            <a href="indian-recipes.html" style="color:#fff;margin:0 10px;text-decoration:none;">Indian</a>
+            <a href="italian-bakery-recipes.html" style="color:#fff;margin:0 10px;text-decoration:none;">Italian &amp; Bakery</a>
+            <a href="about.html" style="color:#fff;margin:0 10px;text-decoration:none;">About</a>
+            <a href="contact.html" style="color:#fff;margin:0 10px;text-decoration:none;">Contact</a>
+        </nav>
+        <div style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; align-items: center;">
+            <a href="https://www.instagram.com/callanrobert40" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.15); transition: background 0.3s, transform 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.3)';this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.15)';this.style.transform='scale(1)'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61590732962876" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.15); transition: background 0.3s, transform 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.3)';this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.15)';this.style.transform='scale(1)'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">&copy; 2026 A Farm Recipe. Organic recipes, tested in our farmhouse kitchen.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 50px';
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.padding = '20px 50px';
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.88)';
+            }
+        });
+    </script>
+</body>
+</html>
