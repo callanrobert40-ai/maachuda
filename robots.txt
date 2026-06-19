@@ -10,4 +10,4 @@ Disallow: /apple.html
 Disallow: /Windows/
 
 # Sitemap location
-Sitemap: https://delicious-low-fat-recipes.com/sitemap.xml
+Sitemap: https://tasty-recipes.us/sitemap.xml
